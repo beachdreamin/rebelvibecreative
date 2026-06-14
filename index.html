@@ -40,21 +40,29 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 1rem 3rem;
+    height: 64px;
+    padding: 0 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: var(--plum);
-    
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
+  .nav-logo {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
   .nav-logo img {
-    height: 60px;
+    height: 36px;
     width: auto;
-    max-width: 240px;
+    max-width: 200px;
     object-fit: contain;
-    filter: brightness(0) invert(1);s
+    filter: brightness(0) invert(1);
+    display: block;
   }
 
   .nav-links {
