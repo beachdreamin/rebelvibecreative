@@ -23,7 +23,7 @@
   body {
     font-family: 'Jost', sans-serif;
     background: var(--warm-white);
-    color: var(--charcoal);
+    color: rgba(255,255,255,0.85);
     line-height: 1.6;
     overflow-x: hidden;
   }
@@ -40,18 +40,19 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 1.25rem 3rem;
+    padding: 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(250,248,249,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--mauve-light);
+    background: var(--plum);
+    
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
 
   .nav-logo img {
-    height: 36px;
+    height: 52px;
     width: auto;
+    filter: brightness(0) invert(1);
   }
 
   .nav-links {
@@ -61,7 +62,7 @@
   }
 
   .nav-links a {
-    color: var(--charcoal);
+    color: rgba(255,255,255,0.85);
     text-decoration: none;
     font-size: 0.8rem;
     font-weight: 400;
@@ -70,7 +71,7 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--plum); }
+  .nav-links a:hover { color: white; }
 
   /* HERO */
   .hero {
@@ -96,10 +97,16 @@
   .hero-content { position: relative; z-index: 1; max-width: 800px; }
 
   .hero-logo {
-    width: min(600px, 85vw);
-    margin: 0 auto 2.5rem;
+    width: min(720px, 90vw);
+    margin: 0 auto 2rem;
     display: block;
-    mix-blend-mode: multiply;
+
+  }
+
+  .hero-logo-wrap {
+    background: transparent;
+    margin: 0 auto 2rem;
+    width: min(720px, 90vw);
   }
 
   .hero-divider {
@@ -222,7 +229,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 500;
-    color: var(--charcoal);
+    color: rgba(255,255,255,0.85);
     line-height: 1.15;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
@@ -359,7 +366,7 @@
     font-size: 0.875rem;
     font-weight: 500;
     letter-spacing: 0.06em;
-    color: var(--charcoal);
+    color: rgba(255,255,255,0.85);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
   }
