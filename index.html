@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rebel Vibe Creative LLC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --plum: #7A145F;
+    --plum-soft: #A14A89;
+    --charcoal: #1E1B1D;
+    --warm-white: #FAF8F9;
+    --light-gray: #EAE5E8;
+    --mauve: #C9B6C0;
+    --mauve-light: #E8DFE4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* WAVE SVG BACKGROUND ELEMENTS */
+  .wave-bg {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.18;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,248,249,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--mauve-light);
+  }
+
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--charcoal);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--plum); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+    background: var(--warm-white);
+  }
+
+  .hero-waves {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+  .hero-logo {
+    width: min(600px, 85vw);
+    margin: 0 auto 2.5rem;
+    display: block;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-divider span {
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--plum);
+    opacity: 0.4;
+  }
+
+  .sparkle {
+    color: var(--plum);
+    font-size: 0.75rem;
+  }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--plum-soft);
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-sub {
+    font-size: 0.9375rem;
+    color: #6B5F67;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.8rem 2.25rem;
+    background: var(--plum);
+    color: var(--warm-white);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.775rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #5E1049; transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.8rem 2.25rem;
+    background: transparent;
+    color: var(--plum);
+    border: 1px solid var(--plum);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.775rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-outline:hover {
+    background: var(--plum);
+    color: var(--warm-white);
+    transform: translateY(-1px);
+  }
+
+  /* SECTION SHARED */
+  .section-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5.5rem 2rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--plum-soft);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--plum-soft);
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .section-body {
+    color: #6B5F67;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    line-height: 1.85;
+    max-width: 520px;
+    margin-bottom: 3rem;
+  }
+
+  /* DIVIDER LINE */
+  .rule {
+    width: 100%;
+    height: 1px;
+    background: var(--mauve-light);
+  }
+
+  /* ESSENCE BAR */
+  .essence-bar {
+    background: var(--plum);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .essence-bar p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-style: italic;
+    color: var(--warm-white);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .essence-bar .tagline-upper {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-style: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    margin-top: 0.5rem;
+  }
+
+  /* BRANDS */
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .brand-card {
+    background: white;
+    border: 1px solid var(--mauve-light);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.25s, transform 0.2s;
+  }
+
+  .brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--plum);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .brand-card:hover { border-color: var(--mauve); transform: translateY(-3px); }
+  .brand-card:hover::before { opacity: 1; }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--plum);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-type {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+
+  .brand-desc {
+    font-size: 0.9rem;
+    color: #6B5F67;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* SERVICES */
+  .services-section {
+    background: var(--light-gray);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--warm-white);
+    padding: 1.75rem 1.5rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .service-card:hover { border-color: var(--plum); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--mauve);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--charcoal);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: #7A6E74;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  @media (max-width: 680px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+    nav { padding: 1rem 1.5rem; }
+    .section-wrap { padding: 4rem 1.5rem; }
+  }
+
+  .about-text p {
+    font-size: 0.9375rem;
+    color: #6B5F67;
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  .values-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .value-item {
+    padding: 1.25rem;
+    background: white;
+    border: 1px solid var(--mauve-light);
+    text-align: center;
+  }
+
+  .value-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--plum);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .value-sub {
+    font-size: 0.75rem;
+    color: var(--mauve);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section .section-eyebrow { color: var(--mauve); }
+  .contact-section .section-eyebrow::after { background: var(--mauve); }
+  .contact-section h2 { color: var(--warm-white); }
+  .contact-section .section-body { color: var(--mauve); max-width: 440px; }
+
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .contact-detail {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-detail-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mauve);
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+  }
+
+  .contact-detail-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--warm-white);
+    font-weight: 400;
+  }
+
+  .contact-detail-val a {
+    color: var(--warm-white);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201,182,192,0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+
+  .contact-detail-val a:hover { border-color: var(--mauve); }
+
+  .contact-cta-wrap { padding-top: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: #130F12;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    height: 28px;
+    width: auto;
+    margin: 0 auto 1rem;
+    display: block;
+    opacity: 0.7;
+    filter: brightness(10);
+  }
+
+  footer p {
+    font-size: 0.775rem;
+    color: #6B5F67;
+    letter-spacing: 0.08em;
+  }
+
+  footer span { color: var(--mauve); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo-main.png" alt="Rebel Vibe Creative">
+  </a>
+  <div class="nav-links">
+    <a href="#brands">Brands</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-waves" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-100,200 C100,100 300,350 500,200 S900,50 1100,200 S1350,350 1540,200" stroke="#7A145F" stroke-width="1" fill="none" opacity="0.15"/>
+    <path d="M-100,280 C150,180 350,430 550,280 S950,130 1150,280 S1400,430 1540,280" stroke="#A14A89" stroke-width="0.75" fill="none" opacity="0.12"/>
+    <path d="M-100,360 C200,260 400,510 600,360 S1000,210 1200,360 S1440,510 1540,360" stroke="#7A145F" stroke-width="0.5" fill="none" opacity="0.1"/>
+    <path d="M-100,560 C100,460 300,660 500,560 S900,410 1100,560 S1350,710 1540,560" stroke="#C9B6C0" stroke-width="1" fill="none" opacity="0.2"/>
+    <path d="M-100,620 C150,520 350,720 550,620 S950,470 1150,620 S1400,770 1540,620" stroke="#A14A89" stroke-width="0.6" fill="none" opacity="0.1"/>
+  </svg>
+
+  <div class="hero-content">
+    <img src="logo-banner.png" alt="Rebel Vibe Creative" class="hero-logo">
+    <div class="hero-divider">
+      <span></span>
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 0L5.6 4.4L10 5L5.6 5.6L5 10L4.4 5.6L0 5L4.4 4.4L5 0Z" fill="#7A145F"/></svg>
+      <span></span>
+    </div>
+    <p class="hero-tagline">Creative strategy meets modern intelligence.</p>
+    <p class="hero-sub">Nebraska-based. Woman-owned. A digital-first company built for the businesses and communities ready to do things differently.</p>
+    <div class="hero-cta-row">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ESSENCE BAR -->
+<div class="essence-bar">
+  <p>Work Smarter. Create Bolder.</p>
+  <p class="tagline-upper">Rebel Vibe Creative LLC &nbsp;·&nbsp; Nebraska</p>
+</div>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Our Brands</div>
+    <h2>Two brands.<br>One creative home.</h2>
+    <p class="section-body">Rebel Vibe Creative is the parent company for two distinct content and commerce brands, each serving a real community with a real voice.</p>
+
+    <div class="brands-grid">
+      <div class="brand-card">
+        <div class="brand-name">Salty Bytez</div>
+        <div class="brand-type">AI Education &amp; Digital Products</div>
+        <p class="brand-desc">A learning-in-public AI brand where a programmer in her 50s brings her audience along as she explores artificial intelligence. Real talk, practical tools, zero corporate fluff — with co-host Enzo making every lesson feel less intimidating and a lot more fun.</p>
+      </div>
+      <div class="brand-card">
+        <div class="brand-name">Rebel Heart Diaries</div>
+        <div class="brand-type">Community &amp; Content</div>
+        <p class="brand-desc">A community and content brand for Gen X and older millennial rock music lifers — the people in their 40s, 50s and 60s who never stopped loving rock and don't see themselves represented online. Concert travel, cruise guides, and the friendships built through a lifetime of music.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="section-wrap">
+    <div class="section-eyebrow">Consulting Services</div>
+    <h2>Technology that<br>actually works for you.</h2>
+    <p class="section-body">We help small and mid-sized businesses use AI and automation to simplify operations, save time, and grow — without the overwhelm.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">AI Strategy</div>
+        <p class="service-desc">Practical AI implementation for businesses ready to work smarter and stop doing things the hard way.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Workflow Automation</div>
+        <p class="service-desc">Zapier, custom bots, and AI agents that handle the repetitive work so your team can focus on what matters.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Web &amp; Systems</div>
+        <p class="service-desc">React, AWS, and SaaS integrations built around your actual business needs — not a template.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Digital Operations</div>
+        <p class="service-desc">Process improvement and digital transformation for businesses ready to stop duct-taping things together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow">About</div>
+        <h2>Built by someone<br>who gets it.</h2>
+        <p>Rebel Vibe Creative was founded by a programmer in her 50s who spent decades in tech and decided to build something entirely on her own terms — a company that takes creativity, technology, and real life seriously.</p>
+        <p>Every service, every product, and every brand under this roof is built from lived experience. Not theory. Not templates. The real thing.</p>
+        <p style="font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--plum); font-weight:500;">Nebraska &nbsp;·&nbsp; Woman-Owned &nbsp;·&nbsp; Remote-Ready</p>
+      </div>
+      <div class="values-list">
+        <div class="value-item">
+          <span class="value-label">Professional</span>
+          <span class="value-sub">at the core</span>
+        </div>
+        <div class="value-item">
+          <span class="value-label">Creative</span>
+          <span class="value-sub">by nature</span>
+        </div>
+        <div class="value-item">
+          <span class="value-label">Bold</span>
+          <span class="value-sub">by design</span>
+        </div>
+        <div class="value-item">
+          <span class="value-label">Strategic</span>
+          <span class="value-sub">always</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-wrap">
+    <div class="contact-inner">
+      <div>
+        <div class="section-eyebrow">Contact</div>
+        <h2>Let's work<br>together.</h2>
+        <p class="section-body">Interested in consulting, brand partnerships, or just want to connect? Reach out directly.</p>
+      </div>
+      <div class="contact-cta-wrap">
+        <div class="contact-detail">
+          <div class="contact-detail-label">Email</div>
+          <div class="contact-detail-val"><a href="mailto:hello@rebelvibecreatve.com">hello@rebelvibecreatve.com</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Location</div>
+          <div class="contact-detail-val">Omaha, Nebraska</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Services</div>
+          <div class="contact-detail-val">AI Consulting &amp; Digital Strategy</div>
+        </div>
+        <br>
+        <a href="mailto:hello@rebelvibecreatve.com" class="btn-primary">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo-icon.png" alt="Rebel Vibe Creative" class="footer-logo">
+  <p>&copy; 2025 <span>Rebel Vibe Creative LLC</span> &nbsp;·&nbsp; Nebraska &nbsp;·&nbsp; All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
